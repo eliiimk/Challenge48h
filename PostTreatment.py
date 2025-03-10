@@ -1,7 +1,6 @@
 import pandas as pd
-import pytz
 
-# Chargement des données avec un séparateur de point-virgule et gestion des guillemets
+# Chargement des données
 file_path = 'DataSet/filtered_tweets_engie.csv'
 df = pd.read_csv(file_path, sep=';', quotechar='"', lineterminator='\n')
 
@@ -18,10 +17,10 @@ def remove_scientific_notation(x):
         x = x.replace(',', '.')
         if 'E' in x:  # Si la valeur est en notation scientifique
             base, exponent = x.split('E')
-            return str(int(float(base) * (10 ** int(exponent))))  # Calculer le nombre en entier
-    return x  # Si ce n'est pas en notation scientifique, on retourne la valeur telle quelle
+            return str(int(float(base) * (10 ** int(exponent))))  # Calcule nombre entier
+    return x  # Si ce n'est pas en notation scientifique, on retourne la valeur de base
 
-# Appliquer cette fonction sur la colonne 'id'
+# Appliquer le calcul pour la colonne 'id'
 df['id'] = df['id'].apply(remove_scientific_notation)
 
 # Convertir la colonne 'date' en datetime tout en gardant le fuseau horaire
