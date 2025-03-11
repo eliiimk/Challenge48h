@@ -42,4 +42,4 @@ df = df[['id', 'id_user', 'date', 'time', 'text']]
 df = df.drop_duplicates(subset=['id_user', 'text'], keep='first')
 
 # Sauvegarder le fichier modifié
-df.to_csv('DataSet/save.csv', sep=';', index=False)
+df.to_csv('DataSet/PostTreatment.csv', sep=';', index=False)

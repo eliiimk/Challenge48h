@@ -58,7 +58,7 @@ def analyser_tweet(tweet_text):
 
 
 # 🔹 Chargement du fichier CSV
-csv_path = "DataSet/save.csv"
+csv_path = "DataSet/Post_Treatment.csv"
 df = pd.read_csv(csv_path, sep=';', quotechar='"', lineterminator='\n')
 df.columns = df.columns.str.strip()
 
@@ -86,8 +86,8 @@ df['reponse'] = [res.get('reponse', 'Erreur') for res in results]
 df = df[['id', 'id_user', 'date', 'time', 'text', 'sentiment', 'score_inconfort', 'categorie', 'reponse']]
 
 # 🔹 Sauvegarde des résultats (propre par colonne)
-csv_output_path = "DataSet/ready.csv"
-json_output_path = "DataSet/ready.json"
+csv_output_path = "DataSet/Final.csv"
+json_output_path = "DataSet/Final.json"
 
 # ➡️ Sauvegarde CSV
 df.to_csv(csv_output_path, index=False, sep=';', encoding='utf-8')
